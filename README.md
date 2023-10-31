@@ -1,5 +1,7 @@
 # Project_Altair_Recruitment_1
  First & Second week's(online) challenges of the recruitment process of IUT_Mars_Rover: software_sub_team-2023
+
+
 <?xml version ="1.0"?>
 
 <robot name="Four_Wheeler_dd_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
@@ -71,50 +73,3 @@
 		iyz="0" izz="${(1/12)*body_mass*(body_link_y_dim*body_link_y_dim + body_link_x_dim*body_link_x_dim)}"/>
 	</inertial>
 </link>	
-
-
-	
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
