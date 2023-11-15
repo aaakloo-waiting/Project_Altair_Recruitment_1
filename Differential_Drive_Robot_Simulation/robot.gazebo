@@ -1,0 +1,82 @@
+<?xml version ="1.0"?>
+
+<robot>
+
+<gazebo reference="body_link">
+<mu1>0.2</mu1>
+<mu2>0.2</mu2>
+<material>Gazebo/Red</material>
+</gazebo>
+
+<gazebo reference="wheel1_link">
+<mu1>0.2</mu1>
+<mu2>0.2</mu2>
+<material>Gazebo/Blue</material>
+</gazebo>
+
+<gazebo reference="wheel2_link">
+<mu1>0.2</mu1>
+<mu2>0.2</mu2>
+<material>Gazebo/Blue</material>
+</gazebo>
+
+<gazebo reference="wheel3_link">
+<mu1>0.2</mu1>
+<mu2>0.2</mu2>
+<material>Gazebo/Yellow</material>
+</gazebo>
+
+<gazebo reference="wheel4_link">
+<mu1>0.2</mu1>
+<mu2>0.2</mu2>
+<material>Gazebo/Yellow</material>
+</gazebo>
+
+
+<!--Controller for four-wheeled diff drive robot -->
+<gazebo>
+<plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+
+    <!-- Control Update Rate in Hz -->
+    <updateRate>100.0</updateRate>
+    
+    <!-- *** Empty node for sending flawless control commands -->
+    <robotNamespace> </robotNamespace>
+    
+    <!-- Robot Kinematics -->
+    <leftFrontJoint> wheel4_joint </leftFrontJoint>
+    <rightFrontJoint> wheel3_joint </rightFrontJoint>
+    <leftRearJoint> wheel2_joint </leftRearJoint>
+    <rightRearJoint> wheel1_joint </rightRearJoint>
+    <wheelSeparation>${body_link_y_dim + wheel_link_length}</wheelSeparation>
+    <wheelDiameter>${2*wheel_link_radius}</wheelDiameter>
+
+    <!-- Maximum Torque wheels can produce -->
+    <torque>1000</torque>
+
+    <!-- Twist msg(Receiving geometry msg) commands, default to 'cmd_vel' -->
+    <commandTopic> cmd_vel </commandTopic>
+
+    <!-- Odometry msg(Publishing navigation msg) commands, default to 'odom' -->
+    <OdometryTopic> odom </OdometryTopic>
+
+    <!-- Odometry Frame, default to 'odom' -->
+    <OdometryFrame> odom </OdometryFrame>
+
+    <!-- Robot Frame(calculating odometry) default to 'base_footprint' -->
+    <robotBaseFrame> dummy </robotBaseFrame>
+
+    <!-- Publish Transforms for wheel links, odometry and sensor_msgs(for wheel joints) -->
+    <publishWheelTF> true </publishWheelTF>
+    <publishOdom> true </publishOdom>
+    <publishWheelJointState> true </publishWheelJointState>
+
+    <!-- For running gazebo: covariance requirements -->
+    <covariance_x>0.0001</covariance_x>
+    <covariance_y>0.0001</covariance_y>
+    <covariance_yaw>0.01</covariance_yaw>
+
+</plugin>
+</gazebo>
+</robot>
+
